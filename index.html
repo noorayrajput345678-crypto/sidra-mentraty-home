@@ -1,0 +1,705 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ayni Beauty Salon</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fff9f8;
+    color: #3d3030;
+}
+
+/* NAVBAR */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 7%;
+    background: rgba(255,255,255,0.96);
+    box-shadow: 0 3px 20px rgba(80,40,40,0.08);
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #a35d68;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #493a3a;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: #b66b78;
+}
+
+/* HERO */
+.hero {
+    min-height: 680px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background:
+        linear-gradient(rgba(55,25,30,.42), rgba(55,25,30,.42)),
+        url("imgparlor/OIP.webp");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    color: white;
+    max-width: 750px;
+    padding: 30px;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(50px, 8vw, 92px);
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 30px;
+    background: #c9828d;
+    color: white;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #a85f6b;
+    transform: translateY(-3px);
+}
+
+/* SECTIONS */
+section {
+    padding: 80px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 45px;
+    color: #8f4f5b;
+}
+
+.section-title p {
+    color: #806d6d;
+    margin-top: 8px;
+}
+
+/* GALLERY */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 18px;
+    transition: .4s;
+}
+
+.gallery img:hover {
+    transform: scale(1.04);
+}
+
+/* SERVICES */
+.services {
+    background: #f9eded;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.service-card {
+    background: white;
+    padding: 35px 22px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(100,50,50,.08);
+    transition: .3s;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(100,50,50,.14);
+}
+
+.service-icon {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #985663;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    font-size: 14px;
+    color: #766565;
+    line-height: 1.7;
+}
+
+/* WHY CHOOSE US */
+.choose-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.choose-card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    text-align: center;
+    border: 1px solid #f0dddd;
+    transition: .3s;
+}
+
+.choose-card:hover {
+    transform: translateY(-6px);
+}
+
+.choose-card span {
+    font-size: 35px;
+}
+
+.choose-card h3 {
+    margin: 15px 0 8px;
+    color: #995765;
+}
+
+/* CONTACT */
+.contact-section {
+    background: #f9eded;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-bottom: 50px;
+}
+
+.contact-card {
+    background: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0 7px 20px rgba(100,50,50,.07);
+}
+
+.contact-card span {
+    font-size: 32px;
+}
+
+.contact-card h3 {
+    margin: 12px 0;
+    color: #985663;
+}
+
+.contact-card p {
+    font-size: 14px;
+    color: #6f6060;
+}
+
+/* BOOKING */
+.booking {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 22px;
+    box-shadow: 0 10px 35px rgba(70,40,40,.1);
+}
+
+.booking h2 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    color: #985663;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #ead4d4;
+    border-radius: 10px;
+    outline: none;
+    font-family: inherit;
+    background: #fffafa;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #bd7180;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-btn {
+    width: 100%;
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    background: #b86c78;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.submit-btn:hover {
+    background: #954f5c;
+}
+
+/* FOOTER */
+footer {
+    background: #35292b;
+    color: white;
+    text-align: center;
+    padding: 45px 20px 20px;
+}
+
+footer h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #d8c9c9;
+    font-size: 14px;
+}
+
+.footer-links {
+    margin: 25px 0;
+}
+
+.footer-links a {
+    color: #eadcdc;
+    text-decoration: none;
+    margin: 0 12px;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.copyright {
+    border-top: 1px solid rgba(255,255,255,.15);
+    padding-top: 18px;
+    margin-top: 20px;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .choose-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        min-height: 560px;
+    }
+
+    .gallery,
+    .service-grid,
+    .choose-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery img {
+        height: 300px;
+    }
+
+    section {
+        padding: 60px 5%;
+    }
+
+    .booking {
+        padding: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">Ayni Beauty Salon</div>
+
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-content">
+
+        <h1>Ayni Beauty Salon</h1>
+
+        <p>
+            Beauty, elegance and confidence — all in one place.
+        </p>
+
+        <a href="#booking" class="btn">
+            Book Your Appointment
+        </a>
+
+    </div>
+</section>
+
+
+<!-- GALLERY -->
+<section id="gallery">
+
+    <div class="section-title">
+        <h2>Our Gallery</h2>
+        <p>Explore our beauty and styling work</p>
+    </div>
+
+    <div class="gallery">
+
+        <img src="imgparlor/random.jpg" alt="Beauty Salon">
+        <img src="imgparlor/amazing.jpg" alt="Salon Makeup">
+        <img src="imgparlor/beautiful.jpg" alt="Beauty Styling">
+        <img src="imgparlor/look.jpg" alt="Salon Services">
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+<section class="services" id="services">
+
+    <div class="section-title">
+        <h2>Our Services</h2>
+        <p>Everything you need for your perfect look</p>
+    </div>
+
+    <div class="service-grid">
+
+        <div class="service-card">
+            <div class="service-icon">💄</div>
+            <h3>Party Makeup</h3>
+            <p>Beautiful makeup and stylish hair looks for your special occasions.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">👰</div>
+            <h3>Bridal Makeup</h3>
+            <p>Elegant bridal makeup, hairstyling and complete bridal beauty care.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">💇‍♀️</div>
+            <h3>Hair Services</h3>
+            <p>Hair styling, keratin, rebonding, cutting, straightening and highlights.</p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">💅</div>
+            <h3>Nails</h3>
+            <p>Manicure and pedicure services for beautiful and well-cared-for nails.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WHY CHOOSE US -->
+<section id="about">
+
+    <div class="section-title">
+        <h2>Why Choose Ayni?</h2>
+        <p>Beauty care with comfort and attention</p>
+    </div>
+
+    <div class="choose-grid">
+
+        <div class="choose-card">
+            <span>✨</span>
+            <h3>Professional Services</h3>
+            <p>Quality salon services provided with care and attention.</p>
+        </div>
+
+        <div class="choose-card">
+            <span>🌸</span>
+            <h3>All Beauty Services</h3>
+            <p>Hair, makeup, skincare and nail services in one place.</p>
+        </div>
+
+        <div class="choose-card">
+            <span>💎</span>
+            <h3>Quality Products</h3>
+            <p>We focus on quality products and a comfortable experience.</p>
+        </div>
+
+        <div class="choose-card">
+            <span>💗</span>
+            <h3>Customer Satisfaction</h3>
+            <p>Your happiness and satisfaction are our priorities.</p>
+        </div>
+
+        <div class="choose-card">
+            <span>💰</span>
+            <h3>Affordable Prices</h3>
+            <p>Beautiful services at prices that suit your needs.</p>
+        </div>
+
+        <div class="choose-card">
+            <span>🌷</span>
+            <h3>Relaxing Environment</h3>
+            <p>Enjoy your beauty time in a welcoming salon environment.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT + BOOKING -->
+<section class="contact-section" id="contact">
+
+    <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>We would love to hear from you</p>
+    </div>
+
+    <div class="contact-grid">
+
+        <div class="contact-card">
+            <span>📞</span>
+            <h3>Phone</h3>
+            <p>03069316579</p>
+        </div>
+
+        <div class="contact-card">
+            <span>💬</span>
+            <h3>WhatsApp</h3>
+            <p>03069316579</p>
+        </div>
+
+        <div class="contact-card">
+            <span>📍</span>
+            <h3>Address</h3>
+            <p>
+                Bank Stop Fateh Pur Abadi,
+                Ferozpur Road, House No. 6,
+                near Sitara Beauty Salon
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- BOOKING FORM -->
+    <div class="booking" id="booking">
+
+        <h2>Book Your Appointment</h2>
+
+        <form action="https://formspree.io/f/xrpekpwl" method="Post">
+
+            <div class="form-group">
+                <label>Your Name</label>
+                <input
+                    type="text" name="nanme"
+                    placeholder="Enter your name"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input
+                    type="email" name="name"
+                    placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input
+                    type="tel" name="phone"
+                    placeholder="Enter your phone number"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label>Select Service</label>
+
+                <select required name="services">
+                    <option value="">Choose a service</option>
+                    <option>Threading</option>
+                    <option>Upper lips</option>
+                    <option>Forhead</option>
+                    <option>Party Makeup</option>
+                    <option>Bridal Makeup</option>
+                    <option>Facial</option>
+                    <option>Skin Polish</option>
+                    <option>Full body wax</option>
+                    <option>Hair Styling</option>
+                    <option>Keratin</option>
+                    <option>Rebonding</option>
+                    <option>Hair Cutting</option>
+                    <option>V cut</option>
+                    <option>Baby cutting</option>
+                    <option>U Cut</option>
+                    <option>Bangs</option>
+                    <option>Wolf Cutting</option>
+                    <option>butterfly cutting</option>
+                    <option>Highlights</option>
+                    <option>Manicure</option>
+                    <option>Pedicure</option>
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <label>Message</label>
+
+                <textarea
+                name="message"
+                    placeholder="Tell us anything you would like us to know..."></textarea>
+
+            </div>
+
+            <button type="submit" class="submit-btn">
+                Book Appointment
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <h2>Ayni Beauty Salon</h2>
+
+    <p>
+        Your beauty, our passion.
+    </p>
+
+    <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="copyright">
+        <p>© 2026 Ayni Beauty Salon. All Rights Reserved.</p>
+    </div>
+
+</footer>
+
+</body>
+</html>
